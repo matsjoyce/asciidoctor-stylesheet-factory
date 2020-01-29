@@ -1,0 +1,381 @@
+@import "settings/dnd";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+@import "dnd.assets";
+@import "dnd.fonts";
+
+html {
+    background: white;
+}
+
+body {
+    background-image: $backgroundImage;
+    background-repeat: repeat;
+    background-position: right top;
+    background-attachment: scroll;
+    font-size: 13px;
+}
+
+#header {
+    padding: 2em;
+    padding-bottom: 0;
+}
+
+#header > h1:only-child, body.toc2 #header > h1:nth-last-child(2) {
+    border: none;
+}
+
+#header > h1:first-child {
+    margin: 0;
+}
+
+.paragraph.lead > p, #preamble > .sectionbody > [class="paragraph"]:first-of-type p {
+    color: $body-font-color;
+    font-size: 1em;
+    overflow: hidden;
+
+    &::first-letter {
+        float: left;
+        vertical-align: baseline;
+        font-family: Solberry;
+        font-size: 6em;
+        color: #222;
+        line-height: 0.8em;
+    }
+}
+
+#content {
+    padding: 0 2em;
+}
+
+h1, h2, h3, h4, h5 {
+    margin-top: .2em;
+    margin-bottom: .2em;
+    font-family: MrJeeves;
+    line-height: 1;
+    border: none;
+}
+
+h3 {
+    border-bottom: 2px solid #c9ad6a;
+}
+
+h5 {
+    font-family: ScalySansSmallCaps;
+    color: $body-font-color;
+}
+
+a {
+    color: #0101ab;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+mark {
+    background: #ffd700;
+}
+
+.quoteblock.excerpt > blockquote, .quoteblock .quoteblock {
+    border: none;
+    padding: 0 0.5em;
+}
+
+.quoteblock {
+    margin: 0;
+
+    .quoteblock p, .quoteblock blockquote {
+        font-size: inherit;
+    }
+
+    blockquote {
+        &::before {
+            content: "";
+        }
+
+        p {
+            font-size: inherit;
+            font-style: normal;
+            line-height: inherit;
+        }
+
+        font-size: inherit;
+        line-height: inherit;
+        margin: 1em 0;
+        color: $body-font-color;
+        font-family: ScalySans;
+        border-style: solid;
+        max-width: 140mm;
+    }
+}
+
+.quoteblock blockquote, .note-border {
+    background-color: #e0e5c1;
+    border-style: solid;
+    border-width: 11px;
+    border-image: $noteBorderImage 11;
+    border-image-outset: 9px 0px;
+    box-shadow: 1px 4px 14px #888;
+}
+
+.quoteblock.descriptive blockquote, .descriptive-border {
+    background-color: #faf7ea;
+    border-style: solid;
+    border-width: 7px;
+    border-image: $descriptiveBoxImage 12 round;
+    border-image-outset: 4px;
+    box-shadow: 0px 0px 6px #faf7ea;
+}
+
+.classtable, .frame-border {
+    background-color: white;
+    border: initial;
+    border-style: solid;
+    margin: 25px 17px;
+    border-image-outset: 25px 17px;
+    border-image-repeat: round;
+    border-image-slice: 150 200 150 200;
+    border-image-source: $frameBorderImage;
+    border-image-width: 47px;
+}
+
+.classtable {
+    margin-bottom: 40px;
+    border-collapse: separate;
+}
+
+#toc {
+    border: none;
+
+    #toctitle {
+        color: $header-font-color;
+        font-size: $h2-font-size;
+        border: none;
+    }
+
+    a {
+        line-height: 1.1;
+        display: block;
+        padding-bottom: 0.25em;
+    }
+
+    .sectlevel1 > li > a {
+        color: $header-font-color;
+        font-size: 1.8em;
+        font-weight: bold;
+    }
+
+    .sectlevel2 > li > a {
+        color: $header-font-color;
+        font-size: 1.6em;
+        text-decoration: underline;
+    }
+
+    .sectlevel3 > li > a {
+        color: $header-font-color;
+        font-size: 1.4em;
+    }
+
+    .sectlevel4 > li > a {
+        font-family: ScalySansSmallCaps;
+        color: $body-font-color;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+}
+
+#header > h1:first-child + #toc {
+    border: none;
+}
+/*
+.sect1 {
+    padding: 0;
+}*/
+
+.sect1 + .sect1 {
+    border: none;
+}
+
+li > p:only-child {
+    margin: 0;
+}
+
+table {
+    font-family: ScalySans;
+}
+
+table tr th, table tr td {
+    padding: 0.3em 0.5em;
+}
+
+table.tableblock tr.odd, table.tableblock tr.alt, table.tableblock tbody tr:nth-of-type(odd) {
+    background: #e0e5c1;
+}
+
+.admonitionblock > table {
+    width: auto;
+
+    td.content {
+        border-color: $body-font-color;
+        color: $header-font-color;
+    }
+}
+
+.paragraph + .paragraph, .ulist:not(.none) + .paragraph, .olist + .paragraph {
+    text-indent: 1em;
+}
+
+.paragraph + .paragraph {
+    margin-top: -0.8em;
+}
+
+.ulist, .olist {
+    margin-bottom: 0.8em;
+
+    ul:not(.none), ol:not(.none) {
+        margin-left: 1.5em;
+    }
+
+    &.none {
+        margin-left: 0em;
+    }
+}
+
+.twocols {
+    column-count: 2;
+
+    & > h1, & > h2, & > h3, & > h4, & > h5 {
+        &:first-child {
+            column-span: all;
+        }
+    }
+}
+
+.literalblock pre, .listingblock > .content > pre {
+    font-size: inherit !important;
+    background: #FDF1DC !important;
+    border-color: $header-font-color;
+    padding: 0.5em;
+}
+
+.statblock, .monster-border {
+    background-color: #FDF1DC;
+    border-style: solid !important;
+    border-width: 10px !important;
+    margin: 2em 0;
+    padding: 5px 10px;
+    padding-top: 15px;
+    border-image: $monsterBorderImage 10 !important;
+    box-shadow: 1px 4px 14px #888;
+}
+
+.statblock {
+    font-family: ScalySans;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 15px;
+    column-count: 2;
+    line-height: 1.1;
+    page-break-inside: avoid;
+    max-width: 210mm;
+
+    & > *:first-child {
+        margin-top: -8px;
+        margin-bottom: 0px;
+        font-family: MrJeeves;
+        border: none;
+        font-size: 2em;
+
+        & + * > p {
+            margin: 0;
+        }
+    }
+
+    h3 {
+        font-family: ScalySans;
+        font-weight: 400;
+        border-bottom: 1px solid $header-font-color;
+    }
+
+    & > h3:first-child {
+        font-weight: 700;
+    }
+
+    hr + .ulist {
+        margin: 0;
+
+        & ul {
+            margin: 0;
+            list-style-type: none;
+            color: $header-font-color;
+        }
+    }
+
+    .paragraph + .paragraph, .ulist:not(.none) + .paragraph, .olist + .paragraph {
+        text-indent: 0em;
+        margin-top: -0.3em;
+    }
+
+    hr {
+        visibility: visible;
+        height: 6px;
+        margin: 6px 0px;
+        background-image: $redTriangleImage;
+        background-size: 100% 100%;
+        border: none;
+    }
+
+    table {
+        width: 100%;
+        background: none;
+        border: none;
+        margin: 0;
+
+        tr {
+            background: none;
+        }
+
+        &.ability-scores td {
+            vertical-align: bottom;
+            padding: 0.3em 0.1em;
+            text-align: center;
+            color: $header-font-color;
+            font-size: 1em;
+            line-height: 1;
+        }
+    }
+}
+
+#footer {
+    background: $header-font-color;
+    font-family: MrJeeves;
+    padding: 0.5em;
+
+    #footer-text {
+        font-size: 1.5em;
+        color: white;
+    }
+}
+
+/*@media (min-width: 800px) {
+    .statblock {
+        column-count: 3;
+    }
+}*/
+
+@media print {
+    body {
+        background: none;
+    }
+    #header {
+        padding: 0;
+    }
+    #content {
+        padding: 0;
+        padding-top: 2em;
+    }
+    .statblock {
+        min-width: none;
+    }
+}
